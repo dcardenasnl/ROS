@@ -20,12 +20,6 @@ find_package(rclcpp REQUIRED)
 find_package(octomap REQUIRED)
 find_package(octomap_msgs REQUIRED)
 
-set(THIS_PACKAGE_INCLUDE_DEPENDS
-  rclcpp
-  octomap
-  octomap_msgs
-)
-
 ###########
 # Include #
 ###########
@@ -43,11 +37,13 @@ add_library(octomap_interface SHARED
   src/octomap_interface.cpp
 )
 ament_target_dependencies(octomap_interface
-  ${THIS_PACKAGE_INCLUDE_DEPENDS}
+  rclcpp
+  octomap
+  octomap_msgs
 )
-# target_link_libraries(octomap_interface
-#   ${THIS_PACKAGE_INCLUDE_DEPENDS}
-# )
+target_link_libraries(octomap_interface
+  ${OCTOMAP_LIBRARIES}
+)
 
 #########
 # NODES #
@@ -58,9 +54,12 @@ add_executable(octomap_tests
   src/octomap_tests.cpp
 )
 ament_target_dependencies(octomap_tests
-  ${THIS_PACKAGE_INCLUDE_DEPENDS}
+  rclcpp
+  octomap
+  octomap_msgs
 )
 target_link_libraries(octomap_tests
+  # octomap
   octomap_interface
 )
 
@@ -70,6 +69,7 @@ target_link_libraries(octomap_tests
 
 install(TARGETS
   octomap_interface
+  # octomap_tests
   DESTINATION lib/${PROJECT_NAME}
 )
 
