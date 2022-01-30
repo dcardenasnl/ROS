@@ -1,5 +1,5 @@
-#ifndef COMMUNICATIONS_H_
-#define COMMUNICATIONS_H_
+#ifndef SUB_INTERFACE_H_
+#define SUB_INTERFACE_H_
 
 #include <rclcpp/rclcpp.hpp>
 #include <mutex>
@@ -15,7 +15,7 @@ using Subscriber = rclcpp::SubscriptionBase::SharedPtr;
 class SubInterface
 {
 public:
-  SubInterface(std::string node_name);
+  SubInterface();
   ~SubInterface();
 
 private:

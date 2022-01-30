@@ -31,6 +31,7 @@ include_directories(include)
 
 # amtc_common
 add_library(amtc_common SHARED 
+  src/interface/subscription_interface.cpp
   src/communications.cpp
 )
 ament_target_dependencies(amtc_common

@@ -2,10 +2,12 @@
 
 namespace amtc {
 
-SubInterface::SubInterface(std::string node_name)
+SubInterface::SubInterface()
 {
 }
 
 SubInterface::~SubInterface()
 {
 }
+
+} // End namespace
