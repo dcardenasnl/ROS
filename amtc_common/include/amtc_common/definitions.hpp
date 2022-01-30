@@ -1,3 +1,6 @@
+#ifndef DEFINITIONS_H_
+#define DEFINITIONS_H_
+
 namespace amtc
 {
 
@@ -22,3 +25,5 @@ typedef std::string Topic;
 // typedef boost::any SimpleActionClient;
 
 }
+
+#endif
