@@ -37,9 +37,9 @@ ament_target_dependencies(amtc_common
   rclcpp
 )
 
-# octomap_interface
+# example_interface
 add_library(example_interface SHARED 
-  src/example_interface.cpp
+  test/example_interface.cpp
 )
 ament_target_dependencies(example_interface
   rclcpp
@@ -52,10 +52,17 @@ target_link_libraries(example_interface
 # Nodes  #
 ##########
 
-add_executable(test_node src/test_node.cpp)
-target_include_directories(test_node PUBLIC
+add_executable(example_interface_node test/example_interface_node.cpp)
+ament_target_dependencies(example_interface_node
+  rclcpp
+)
+target_include_directories(example_interface_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
+)
+target_link_libraries(example_interface_node
+  amtc_common
+  example_interface
 )
 
 ##########
@@ -63,8 +70,9 @@ target_include_directories(test_node PUBLIC
 ##########
 
 install(TARGETS 
+  amtc_common
   example_interface
-  test_node
+  example_interface_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
