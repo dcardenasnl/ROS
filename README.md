@@ -1,8 +1,8 @@
-# catkin build -j4 amtc_common
+# catkin build -j4 <PKG>
 
 colcon build --parallel-workers 4 --packages-up-to <PKG>
 
-# catkin build -j4 amtc_common --no-deps
+# catkin build -j4 <PKG> --no-deps
 
 colcon build --parallel-workers 4 --packages-select <PKG>
 
@@ -23,3 +23,4 @@ ros2 pkg create --build-type ament_cmake --node-name test_node amtc_common
 
 colcon build --parallel-workers 4 --packages-select amtc_common --allow-overriding amtc_common
 
+# roslaunch <PKG> <FILENAME>.launch
