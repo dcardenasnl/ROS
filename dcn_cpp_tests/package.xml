@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>dcn_tests</name>
+  <name>dcn_cpp_tests</name>
   <version>0.0.0</version>
   <description>Test package used for codeBook for ros2 common problems</description>
-  <maintainer email="daniel.cardenas@amt.uchile.cl">dcn2</maintainer>
+  <maintainer email="d.cardenas.nl@gmail.com">dcn2</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

@@ -1,4 +1,4 @@
-#include <dcn_tests/cpp_demos/cpp_action_server.hpp>
+#include <dcn_cpp_tests/cpp_demos/cpp_action_server.hpp>
 
 MinimalActionServer::MinimalActionServer():
   Node("minimal_action_server")

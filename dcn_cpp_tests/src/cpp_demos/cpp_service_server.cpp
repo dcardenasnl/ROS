@@ -1,4 +1,4 @@
-#include <dcn_tests/cpp_demos/cpp_service_server.hpp>
+#include <dcn_cpp_tests/cpp_demos/cpp_service_server.hpp>
 
 using std::placeholders::_1;
 using std::placeholders::_2;

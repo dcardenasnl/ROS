@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(dcn_tests)
+project(dcn_cpp_tests)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 

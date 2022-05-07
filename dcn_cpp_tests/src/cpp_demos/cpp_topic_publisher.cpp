@@ -1,4 +1,4 @@
-#include <dcn_tests/cpp_demos/cpp_topic_publisher.hpp>
+#include <dcn_cpp_tests/cpp_demos/cpp_topic_publisher.hpp>
 
 using namespace std::chrono_literals;
 
