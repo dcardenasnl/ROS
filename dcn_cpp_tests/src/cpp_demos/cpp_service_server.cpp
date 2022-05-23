@@ -8,14 +8,16 @@ using namespace std::chrono_literals;
 /* This example creates a subclass of Node and uses std::bind() to register a
 * member function as a callback from the timer. */
 
-MinimalSrvServer::MinimalSrvServer():
-  Node("minimal_service_server")
+MinimalSrvServer::MinimalSrvServer() : Node("minimal_service_server")
 {
-  srv_ = this->create_service<std_srvs::srv::SetBool>("bool_client",  std::bind(&MinimalSrvServer::set_bool_srv, this, _1, _2));
+  srv_ = this->create_service<std_srvs::srv::SetBool>(
+    "bool_client", std::bind(&MinimalSrvServer::set_bool_srv, this, _1, _2));
   RCLCPP_INFO(this->get_logger(), "Service Created");
 }
 
-void MinimalSrvServer::set_bool_srv(const std_srvs::srv::SetBool::Request::SharedPtr req, std_srvs::srv::SetBool::Response::SharedPtr resp)
+void MinimalSrvServer::set_bool_srv(
+  const std_srvs::srv::SetBool::Request::SharedPtr req,
+  std_srvs::srv::SetBool::Response::SharedPtr resp)
 {
   resp->success = req->data;
   RCLCPP_INFO(this->get_logger(), "Inside Service with req = %d", req->data);

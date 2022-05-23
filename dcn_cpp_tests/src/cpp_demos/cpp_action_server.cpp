@@ -1,30 +1,27 @@
 #include <dcn_cpp_tests/cpp_demos/cpp_action_server.hpp>
 
-MinimalActionServer::MinimalActionServer():
-  Node("minimal_action_server")
+MinimalActionServer::MinimalActionServer() : Node("minimal_action_server")
 {
   using namespace std::placeholders;
   action_server_ = rclcpp_action::create_server<Fibonacci>(
-        this,
-        "fibonacci",
-        std::bind(&MinimalActionServer::handle_goal, this, _1, _2),
-        std::bind(&MinimalActionServer::handle_cancel, this, _1),
-        std::bind(&MinimalActionServer::handle_accepted, this, _1),
-        rcl_action_server_get_default_options(),
-        nullptr
-        );
+    this, "fibonacci", std::bind(&MinimalActionServer::handle_goal, this, _1, _2),
+    std::bind(&MinimalActionServer::handle_cancel, this, _1),
+    std::bind(&MinimalActionServer::handle_accepted, this, _1),
+    rcl_action_server_get_default_options(), nullptr);
   RCLCPP_INFO(this->get_logger(), "Server Created");
   return;
 }
 
-rclcpp_action::GoalResponse MinimalActionServer::handle_goal(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const Fibonacci::Goal> goal)
+rclcpp_action::GoalResponse MinimalActionServer::handle_goal(
+  const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const Fibonacci::Goal> goal)
 {
   RCLCPP_INFO(this->get_logger(), "Received goal request with order %d", goal->order);
   (void)uuid;
   return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
 }
 
-rclcpp_action::CancelResponse MinimalActionServer::handle_cancel(const std::shared_ptr<MinimalActionServer::GoalHandleFibonacci> goal_handle)
+rclcpp_action::CancelResponse MinimalActionServer::handle_cancel(
+  const std::shared_ptr<MinimalActionServer::GoalHandleFibonacci> goal_handle)
 {
   RCLCPP_INFO(this->get_logger(), "Received request to cancel goal");
   (void)goal_handle;
@@ -49,11 +46,9 @@ void MinimalActionServer::execute_action(const std::shared_ptr<GoalHandleFibonac
   sequence.push_back(1);
   auto result = std::make_shared<Fibonacci::Result>();
 
-  for (uint i = 1; (static_cast<int>(i) < goal->order) && rclcpp::ok(); ++i)
-  {
+  for (uint i = 1; (static_cast<int>(i) < goal->order) && rclcpp::ok(); ++i) {
     // Check if there is a cancel request
-    if (goal_handle->is_canceling())
-    {
+    if (goal_handle->is_canceling()) {
       result->sequence = sequence;
       goal_handle->canceled(result);
       RCLCPP_INFO(this->get_logger(), "Goal canceled");

@@ -30,4 +30,4 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
 };
 
-#endif // CPP_LISTNER_HPP
+#endif  // CPP_LISTNER_HPP

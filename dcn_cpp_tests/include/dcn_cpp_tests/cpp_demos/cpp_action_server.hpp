@@ -13,6 +13,7 @@
   * ROS
   */
 #include <rclcpp/rclcpp.hpp>
+
 #include "rclcpp_action/rclcpp_action.hpp"
 
 /**
@@ -34,8 +35,10 @@ public:
 private:
   void create_server();
 
-  rclcpp_action::GoalResponse handle_goal(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const Fibonacci::Goal> goal);
-  rclcpp_action::CancelResponse handle_cancel(const std::shared_ptr<GoalHandleFibonacci> goal_handle);
+  rclcpp_action::GoalResponse handle_goal(
+    const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const Fibonacci::Goal> goal);
+  rclcpp_action::CancelResponse handle_cancel(
+    const std::shared_ptr<GoalHandleFibonacci> goal_handle);
   void handle_accepted(const std::shared_ptr<GoalHandleFibonacci> goal_handle);
   void execute_action(const std::shared_ptr<GoalHandleFibonacci> goal_handle);
 
@@ -44,4 +47,4 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
 };
 
-#endif // CPP_TALKER_H
+#endif  // CPP_TALKER_H

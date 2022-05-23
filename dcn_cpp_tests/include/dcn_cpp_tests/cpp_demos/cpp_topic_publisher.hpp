@@ -36,4 +36,4 @@ private:
   double publish_rate_;
 };
 
-#endif // CPP_TALKER_H
+#endif  // CPP_TALKER_H

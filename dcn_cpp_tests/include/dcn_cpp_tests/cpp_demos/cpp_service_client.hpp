@@ -34,8 +34,6 @@ private:
 private:
   rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr client_;
-
 };
 
-
-#endif // __CPP_SERVICE_CLIENT_H__
+#endif  // __CPP_SERVICE_CLIENT_H__

@@ -7,14 +7,11 @@ using namespace std::chrono_literals;
 /* This example creates a subclass of Node and uses std::bind() to register a
 * member function as a callback from the timer. */
 
-MinimalActionClient::MinimalActionClient():
-  Node("minimal_action_client"),
-  is_goal_done_(false)
+MinimalActionClient::MinimalActionClient() : Node("minimal_action_client"), is_goal_done_(false)
 {
   this->client_ptr_ = rclcpp_action::create_client<Fibonacci>(
     this->get_node_base_interface(), this->get_node_graph_interface(),
-    this->get_node_logging_interface(), this->get_node_waitables_interface(),
-    "fibonacci");
+    this->get_node_logging_interface(), this->get_node_waitables_interface(), "fibonacci");
 
   RCLCPP_INFO(this->get_logger(), "Client created");
 
@@ -23,10 +20,7 @@ MinimalActionClient::MinimalActionClient():
   return;
 }
 
-bool MinimalActionClient::isGoalDone()
-{
-  return is_goal_done_;
-}
+bool MinimalActionClient::isGoalDone() { return is_goal_done_; }
 
 void MinimalActionClient::send_goal()
 {
@@ -46,16 +40,16 @@ void MinimalActionClient::send_goal()
   RCLCPP_INFO(this->get_logger(), "Sending goal");
 
   auto send_goal_options = rclcpp_action::Client<Fibonacci>::SendGoalOptions();
-  send_goal_options.goal_response_callback = 
+  send_goal_options.goal_response_callback =
     std::bind(&MinimalActionClient::goal_response_callback, this, _1);
   send_goal_options.feedback_callback =
     std::bind(&MinimalActionClient::feedback_callback, this, _1, _2);
-  send_goal_options.result_callback =
-   std::bind(&MinimalActionClient::result_callback, this, _1);
+  send_goal_options.result_callback = std::bind(&MinimalActionClient::result_callback, this, _1);
   this->client_ptr_->async_send_goal(goal_msg, send_goal_options);
 }
 
-void MinimalActionClient::goal_response_callback(std::shared_future<GoalHandleFibonacci::SharedPtr> future)
+void MinimalActionClient::goal_response_callback(
+  std::shared_future<GoalHandleFibonacci::SharedPtr> future)
 {
   RCLCPP_INFO(this->get_logger(), "goal_response_callback");
   auto goal_handle = future.get();
@@ -79,7 +73,7 @@ void MinimalActionClient::feedback_callback(
   RCLCPP_INFO(this->get_logger(), ss.str().c_str());
 }
 
-void MinimalActionClient::result_callback(const GoalHandleFibonacci::WrappedResult &result)
+void MinimalActionClient::result_callback(const GoalHandleFibonacci::WrappedResult & result)
 {
   switch (result.code) {
     case rclcpp_action::ResultCode::SUCCEEDED:
@@ -96,8 +90,7 @@ void MinimalActionClient::result_callback(const GoalHandleFibonacci::WrappedResu
   }
   std::stringstream ss;
   ss << "Result received: ";
-  for (auto number : result.result->sequence)
-  {
+  for (auto number : result.result->sequence) {
     ss << number << " ";
   }
   RCLCPP_INFO(this->get_logger(), ss.str().c_str());
@@ -109,8 +102,7 @@ int main(int argc, char * argv[])
   rclcpp::init(argc, argv);
   auto action_client_ptr = std::make_shared<MinimalActionClient>();
 
-  while (!action_client_ptr->isGoalDone())
-  {
+  while (!action_client_ptr->isGoalDone()) {
     rclcpp::spin_some(action_client_ptr);
   }
 

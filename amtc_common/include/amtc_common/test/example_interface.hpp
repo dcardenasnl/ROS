@@ -12,19 +12,19 @@
 
 class ExampleNode
 {
-/* Start class with public methods */
+  /* Start class with public methods */
 public:
-  ExampleNode(amtc::Communications* comms_ptr);
+  ExampleNode(amtc::Communications * comms_ptr);
   ~ExampleNode();
 
   /* Declarate callback as first method */
   void exampleStringCallback(const std_msgs::msg::String::SharedPtr msg);
 
-/* Avoid using public attibutes */
+  /* Avoid using public attibutes */
 
-/* Set private method after public */
+  /* Set private method after public */
 private:
-  amtc::Communications* comms_ptr_;
+  amtc::Communications * comms_ptr_;
 };
 
 #endif

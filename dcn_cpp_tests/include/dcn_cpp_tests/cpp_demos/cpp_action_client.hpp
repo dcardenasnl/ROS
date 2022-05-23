@@ -35,7 +35,8 @@ public:
 private:
   void send_goal();
   void goal_response_callback(std::shared_future<GoalHandleFibonacci::SharedPtr> future);
-  void feedback_callback(GoalHandleFibonacci::SharedPtr, const std::shared_ptr<const Fibonacci::Feedback> feedback);
+  void feedback_callback(
+    GoalHandleFibonacci::SharedPtr, const std::shared_ptr<const Fibonacci::Feedback> feedback);
   void result_callback(const GoalHandleFibonacci::WrappedResult & result);
 
 private:
@@ -43,4 +44,4 @@ private:
   bool is_goal_done_;
 };
 
-#endif // CPP_TALKER_H
+#endif  // CPP_TALKER_H

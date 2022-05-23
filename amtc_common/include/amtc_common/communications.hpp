@@ -1,12 +1,10 @@
 #ifndef COMMUNICATIONS_H_
 #define COMMUNICATIONS_H_
 
-#include <rclcpp/rclcpp.hpp>
-#include <mutex>
-
-#include <amtc_common/interface/subscription_interface.hpp>
 #include <amtc_common/definitions.hpp>
-
+#include <amtc_common/interface/subscription_interface.hpp>
+#include <mutex>
+#include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/string.hpp>
 
 namespace amtc
@@ -18,7 +16,7 @@ using Subscriber = rclcpp::SubscriptionBase::SharedPtr;
 
 class Communications
 {
-/* Start class with public methods */
+  /* Start class with public methods */
 public:
   Communications(std::string node_name);
   ~Communications();
@@ -29,9 +27,8 @@ private:
   std::shared_ptr<rclcpp::Node> node_ptr_;
 
   SubInterface sub_interface_;
-
 };
 
-} // End namespace
+}  // namespace amtc
 
 #endif
