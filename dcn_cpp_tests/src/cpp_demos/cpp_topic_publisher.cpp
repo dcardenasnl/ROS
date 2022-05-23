@@ -4,13 +4,21 @@ using namespace std::chrono_literals;
 
 MinimalPublisher::MinimalPublisher():
   Node("minimal_publisher"),
-  count_(0)
+  count_(0),
+  publish_rate_(0.0)
 {
+  /* Params */
+  declare_parameter<double>("publish_rate", 0.0);
+
+  this->get_parameter<double>("publish_rate", publish_rate_);
+
+  RCLCPP_INFO(this->get_logger(), "publish_rate = %.3f", publish_rate_);
+
   /* Publishers */
   publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
 
   /* Timers */
-  std::chrono::milliseconds period(500ms);
+  std::chrono::duration<double, std::milli> period(1000/publish_rate_);
   timer_ = this->create_wall_timer(period, std::bind(&MinimalPublisher::timer_callback, this));
 }
 

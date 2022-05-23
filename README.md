@@ -1,10 +1,10 @@
 # catkin build -j4 <PKG>
 
-colcon build --parallel-workers 4 --packages-up-to <PKG>
+colcon build --parallel-workers 4 --packages-up-to <PKG> --symlink-install
 
 # catkin build -j4 <PKG> --no-deps
 
-colcon build --parallel-workers 4 --packages-select <PKG>
+colcon build --parallel-workers 4 --packages-select <PKG> --symlink-install
 
 # rospack find
 

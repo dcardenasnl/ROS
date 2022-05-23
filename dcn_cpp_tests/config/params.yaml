@@ -1,0 +1,12 @@
+##########
+# CONFIG #
+##########
+
+topic_pub:
+  ros__parameters:
+    publish_rate: 1.0  # Hz
+
+topic_sub:
+  ros__parameters:
+    int_number: 27
+    float_param: 45.2
