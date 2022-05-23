@@ -1,21 +1,13 @@
-#ifndef CPP_LISTNER_HPP
-#define CPP_LISTNER_HPP
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
-#include <memory>
-/**
-  * ROS
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_SUBSCRIBER_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_SUBSCRIBER_HPP_
+
 #include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/string.hpp>
 
-/**
-  * ROS MSGS
-  */
-#include "std_msgs/msg/string.hpp"
-
-using namespace std::chrono_literals;
+#include <memory>
 
 class MinimalSubscriber : public rclcpp::Node
 {
@@ -30,4 +22,4 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
 };
 
-#endif  // CPP_LISTNER_HPP
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_SUBSCRIBER_HPP_

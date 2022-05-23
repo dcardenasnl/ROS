@@ -1,25 +1,16 @@
-#ifndef CPP_TALKER_H
-#define CPP_TALKER_H
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_PUBLISHER_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_PUBLISHER_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/string.hpp>
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
-
-/**
-  * ROS
-  */
-#include <rclcpp/rclcpp.hpp>
-
-/**
-  * ROS MSGS
-  */
-#include "std_msgs/msg/string.hpp"
-
-using namespace std::chrono_literals;
 
 class MinimalPublisher : public rclcpp::Node
 {
@@ -36,4 +27,4 @@ private:
   double publish_rate_;
 };
 
-#endif  // CPP_TALKER_H
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_TOPIC_PUBLISHER_HPP_

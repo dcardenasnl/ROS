@@ -1,6 +1,11 @@
-#include <dcn_cpp_tests/cpp_demos/cpp_action_server.hpp>
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-MinimalActionServer::MinimalActionServer() : Node("minimal_action_server")
+#include <dcn_cpp_tests/cpp_demos/cpp_action_server.hpp>
+#include <memory>
+
+MinimalActionServer::MinimalActionServer()
+: Node("minimal_action_server")
 {
   using namespace std::placeholders;
   action_server_ = rclcpp_action::create_server<Fibonacci>(
@@ -9,7 +14,6 @@ MinimalActionServer::MinimalActionServer() : Node("minimal_action_server")
     std::bind(&MinimalActionServer::handle_accepted, this, _1),
     rcl_action_server_get_default_options(), nullptr);
   RCLCPP_INFO(this->get_logger(), "Server Created");
-  return;
 }
 
 rclcpp_action::GoalResponse MinimalActionServer::handle_goal(
@@ -69,7 +73,6 @@ void MinimalActionServer::execute_action(const std::shared_ptr<GoalHandleFibonac
     goal_handle->succeed(result);
     RCLCPP_INFO(this->get_logger(), "Goal succeeded");
   }
-  return;
 }
 
 int main(int argc, char * argv[])

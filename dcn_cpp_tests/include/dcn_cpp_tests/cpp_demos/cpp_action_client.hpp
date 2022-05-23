@@ -1,26 +1,18 @@
-#ifndef CPP_TALKER_H
-#define CPP_TALKER_H
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_CLIENT_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_CLIENT_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+
+#include <dcn_msgs/action/fibonacci.hpp>
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
-
-/**
-  * ROS
-  */
-#include <rclcpp/rclcpp.hpp>
-#include <rclcpp_action/rclcpp_action.hpp>
-
-/**
-  * ROS MSGS
-  */
-#include <dcn_msgs/action/fibonacci.hpp>
-
-using namespace std::chrono_literals;
 
 class MinimalActionClient : public rclcpp::Node
 {
@@ -44,4 +36,4 @@ private:
   bool is_goal_done_;
 };
 
-#endif  // CPP_TALKER_H
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_CLIENT_HPP_

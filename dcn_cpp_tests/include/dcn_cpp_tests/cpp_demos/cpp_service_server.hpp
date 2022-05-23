@@ -1,27 +1,17 @@
-#ifndef CPP_TALKER_H
-#define CPP_TALKER_H
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_SERVER_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_SERVER_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_components/register_node_macro.hpp>
+#include <std_srvs/srv/set_bool.hpp>
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
-
-/**
-  * ROS
-  */
-#include <rclcpp/rclcpp.hpp>
-
-#include "rclcpp_components/register_node_macro.hpp"
-
-/**
-  * ROS MSGS
-  */
-#include "std_srvs/srv/set_bool.hpp"
-
-using namespace std::chrono_literals;
 
 class MinimalSrvServer : public rclcpp::Node
 {
@@ -37,4 +27,4 @@ private:
   rclcpp::Service<std_srvs::srv::SetBool>::SharedPtr srv_;
 };
 
-#endif  // CPP_TALKER_H
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_SERVER_HPP_

@@ -1,8 +1,13 @@
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
+
 #include <dcn_cpp_tests/cpp_demos/cpp_topic_publisher.hpp>
+#include <memory>
 
 using namespace std::chrono_literals;
 
-MinimalPublisher::MinimalPublisher() : Node("minimal_publisher"), count_(0), publish_rate_(0.0)
+MinimalPublisher::MinimalPublisher()
+: Node("minimal_publisher"), count_(0), publish_rate_(0.0)
 {
   /* Params */
   declare_parameter<double>("publish_rate", 0.0);

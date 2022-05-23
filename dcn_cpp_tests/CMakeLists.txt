@@ -72,7 +72,7 @@ ament_target_dependencies(cpp_service_server
 )
 
 # cpp_action_client
-add_executable(cpp_action_client 
+add_executable(cpp_action_client
   src/cpp_demos/cpp_action_client.cpp
 )
 ament_target_dependencies(cpp_action_client
@@ -120,6 +120,9 @@ install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  set(ament_cmake_copyright_FOUND TRUE)
+  set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
 

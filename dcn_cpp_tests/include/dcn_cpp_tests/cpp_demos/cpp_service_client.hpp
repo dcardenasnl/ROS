@@ -1,22 +1,15 @@
-#ifndef __CPP_SERVICE_CLIENT_H__
-#define __CPP_SERVICE_CLIENT_H__
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_CLIENT_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_CLIENT_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <std_srvs/srv/set_bool.hpp>
+
 #include <chrono>
 #include <memory>
 #include <stdexcept>
-
-/**
-  * ROS
-  */
-#include <rclcpp/rclcpp.hpp>
-
-/**
-  * ROS MSGS
-  */
-#include "std_srvs/srv/set_bool.hpp"
 
 class MinimalSrvClient : public rclcpp::Node
 {
@@ -36,4 +29,4 @@ private:
   rclcpp::Client<std_srvs::srv::SetBool>::SharedPtr client_;
 };
 
-#endif  // __CPP_SERVICE_CLIENT_H__
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_SERVICE_CLIENT_HPP_

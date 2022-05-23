@@ -1,4 +1,8 @@
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
+
 #include <dcn_cpp_tests/cpp_demos/cpp_action_client.hpp>
+#include <memory>
 
 using std::placeholders::_1;
 
@@ -7,7 +11,9 @@ using namespace std::chrono_literals;
 /* This example creates a subclass of Node and uses std::bind() to register a
 * member function as a callback from the timer. */
 
-MinimalActionClient::MinimalActionClient() : Node("minimal_action_client"), is_goal_done_(false)
+MinimalActionClient::MinimalActionClient()
+: Node("minimal_action_client"),
+  is_goal_done_(false)
 {
   this->client_ptr_ = rclcpp_action::create_client<Fibonacci>(
     this->get_node_base_interface(), this->get_node_graph_interface(),
@@ -17,10 +23,9 @@ MinimalActionClient::MinimalActionClient() : Node("minimal_action_client"), is_g
 
   send_goal();
 
-  return;
 }
 
-bool MinimalActionClient::isGoalDone() { return is_goal_done_; }
+bool MinimalActionClient::isGoalDone() {return is_goal_done_;}
 
 void MinimalActionClient::send_goal()
 {

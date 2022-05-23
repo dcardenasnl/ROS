@@ -1,27 +1,17 @@
-#ifndef CPP_TALKER_H
-#define CPP_TALKER_H
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
 
-/**
-  * Others
-  */
+#ifndef DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_SERVER_HPP_
+#define DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_SERVER_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <dcn_msgs/action/fibonacci.hpp>
+
 #include <chrono>
 #include <functional>
 #include <memory>
 #include <string>
-
-/**
-  * ROS
-  */
-#include <rclcpp/rclcpp.hpp>
-
-#include "rclcpp_action/rclcpp_action.hpp"
-
-/**
-  * ROS MSGS
-  */
-#include <dcn_msgs/action/fibonacci.hpp>
-
-using namespace std::chrono_literals;
 
 class MinimalActionServer : public rclcpp::Node
 {
@@ -47,4 +37,4 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
 };
 
-#endif  // CPP_TALKER_H
+#endif  // DCN_CPP_TESTS__CPP_DEMOS__CPP_ACTION_SERVER_HPP_

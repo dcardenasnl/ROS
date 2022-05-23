@@ -1,10 +1,15 @@
+// Copyright (c) 2020 Daniel Cardenas
+// Software License Agreement (BSD License)
+
 #include <dcn_cpp_tests/cpp_demos/cpp_service_client.hpp>
+#include <memory>
 
 using std::placeholders::_1;
 
 using namespace std::chrono_literals;
 
-MinimalSrvClient::MinimalSrvClient() : Node("minimal_service_client")
+MinimalSrvClient::MinimalSrvClient()
+: Node("minimal_service_client")
 {
   /* Srv Server */
   client_ = this->create_client<std_srvs::srv::SetBool>("bool_client");
@@ -16,7 +21,6 @@ MinimalSrvClient::MinimalSrvClient() : Node("minimal_service_client")
 void MinimalSrvClient::timer_callback()
 {
   sendService();
-  return;
 }
 
 bool MinimalSrvClient::sendService()
@@ -50,7 +54,8 @@ void MinimalSrvClient::waitForResponce(rclcpp::Client<std_srvs::srv::SetBool>::S
 {
   if (
     rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) !=
-    rclcpp::FutureReturnCode::SUCCESS) {
+    rclcpp::FutureReturnCode::SUCCESS)
+  {
     throw std::runtime_error("service responce reception error");
   }
 }

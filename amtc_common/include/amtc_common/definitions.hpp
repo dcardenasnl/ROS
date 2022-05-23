@@ -1,6 +1,8 @@
 #ifndef DEFINITIONS_H_
 #define DEFINITIONS_H_
 
+#include <string>
+
 namespace amtc
 {
 typedef int SubscriberID;

@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.actions import ExecuteProcess
 
+
 def generate_launch_description():
     # Config
     config = os.path.join(
@@ -18,22 +19,20 @@ def generate_launch_description():
         executable='cpp_topic_publisher',
         name='topic_pub',
         output='screen',
-        emulate_tty = True,
-        parameters = [config]
+        parameters=[config]
         )
     sub_node = Node(
         package='dcn_cpp_tests',
         executable='cpp_topic_subscriber',
         name='topic_sub',
-        emulate_tty = True,
         output='screen'
         )
     random_publish_process = ExecuteProcess(
         cmd=[
-            'ros2','topic', 'pub', '-r 0.01','/topic',
+            'ros2', 'topic', 'pub', '-r 0.01', '/topic',
             'std_msgs/msg/String', '{data: RANDOM MSG}']
         )
-    
+
     # Launch set-up
     launch_node = [
         sub_node,
